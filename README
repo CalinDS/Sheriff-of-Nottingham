@@ -1,0 +1,40 @@
+Calin Dragos Stefan 325CA
+calinds2009@yahoo.com
+Data finalizare tema: 11.11.2019
+Tema1 - POO
+
+	Inainte de toate as vrea sa fac niste clarificari cu privire la redactarea
+codului, ca sa fie mai usor de urmarit:
+- am amestecat in metode si atribute denumirile Cards si Goods, dar ele se
+refera la acelasi lucru.
+- nu am folosit enum-ul nici la stilul de joc al jucatorului, am optat pentru
+string-uri, si nici ca sa stabilesc legalitatea unui bun, m-am folosit de id.
+- stand se refera la taraba
+- nu am facut package separat de comparatori, am considerat ca e mai bine sa
+fie in pachet cu clasele pentru care sunt definite
+
+	Logica programului se implementeaza in main, iar rezolvarea problemei se
+bazeaza pe superclasa Player, pe care am extins-o cu cele trei stiluri de joc.
+In cadrul acestora, functiile importante sunt cele de declarare a bunului, de
+umplere a sacului si de inspectare a celorlalti jucatori. Am decis astfel sa
+implementez in superclasa strategia de baza (puteam sa o implementez in basic
+si sa fac greedy si bribed sa extinda basic, dar am zis ca e mai bine ca toate
+subclasele sa derive din Player, mai ales ca orice strategie porneste de la
+cea de baza, sau s-ar reduce la ea daca jucatorul nu mai are bani).
+	Pe langa aceste functii, in Player mai am si functia de mutare a cartilor
+din sac pe taraba, de adaugare a bonusurilor ilegale, de calcul al profitului
+si functia statica pentru calculul bonusurilor legale (am facut-o statica
+pentru ca o sa am nevoie de ea o singura data, la finalul jocului, si nu
+tine de o singura instanta, ci de intreg vectorul de jucatori, asa ca e mai
+usor sa lucrez cu ea ca fiind a clasei).
+	La implementarea subclaselor, basic si greedy sunt aproape la fel ca
+player, iar la bribed a trebuit sa pun mai multe conditii in functie de cum
+declara cartea sau umplea sacul. Tot la bribed a trebuit sa modific inspect-ul
+pana se executa in ordinea ceruta si respectand conditiile date.
+
+	In main, pentru fiecare runda, ma folosesc de 2 for-uri ca sa fac pe rand
+fiecare jucator o data serif si in rest comerciant. La fiecare subrunda se
+executa umplerea sacului, inspectia(in functie de cartea declarata)
+si mutarea bunurilor pe taraba, iar la final, dupa ce se termina toate rundele,
+adaug bonusurile, calculez profitul si fac clasamentul.
+
